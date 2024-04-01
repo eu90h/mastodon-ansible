@@ -1,0 +1,26 @@
+diff --git a/config/webpack/production.js b/config/webpack/production.js
+index cec810184..a5807830a 100644
+--- a/config/webpack/production.js
++++ b/config/webpack/production.js
+@@ -15,8 +15,9 @@ const sharedConfig = require('./shared');
+ const root = resolve(__dirname, '..', '..');
+ 
+ module.exports = merge(sharedConfig, {
++  parallelism: 1,
+   mode: 'production',
+-  devtool: 'source-map',
++  devtool: 'none',
+   stats: 'normal',
+   bail: true,
+   optimization: {
+@@ -24,8 +25,8 @@ module.exports = merge(sharedConfig, {
+     minimizer: [
+       new TerserPlugin({
+         cache: true,
+-        parallel: true,
+-        sourceMap: true,
++        parallel: false,
++        sourceMap: false,
+       }),
+     ],
+   },

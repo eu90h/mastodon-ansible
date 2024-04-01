@@ -33,6 +33,9 @@
     - mastodon_version == "latest"
     - mastodon_allow_prerelease | bool
 
+- name: Revert any local Mastodon changes
+  shell: cd /home/mastodon/live && git restore .
+
 - name: Clone Latest Mastodon
   git:
     repo: "https://github.com/mastodon/mastodon.git"
@@ -43,3 +46,13 @@
     - mastodon_version == "latest"
     - mastodon_allow_prerelease | bool == false
 
+- name: Get low RAM patch
+  ansible.builtin.copy:
+    src: /home/stefan/storage/low_ram.diff
+    dest: /home/mastodon/low_ram.diff
+    owner: mastodon
+    group: mastodon
+    mode: u=rw,g=r,o=r
+
+- name: Apply low RAM patch
+  shell: cd /home/mastodon/live && git apply /home/mastodon/low_ram.diff
