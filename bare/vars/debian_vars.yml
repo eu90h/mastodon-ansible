@@ -13,6 +13,7 @@ packages:
   - package: "gcc"
   - package: "git"
   - package: "imagemagick"
+  - package: "certbot"
   - package: "libffi-dev"
   - package: "libgdbm-dev"
   - package: "libicu-dev"
