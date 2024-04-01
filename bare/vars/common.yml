@@ -26,7 +26,7 @@ nginx_catch_all: "false"
 redis_host: localhost
 redis_port: 6379
 db_host: /var/run/postgresql
-use_legacy_certbot: "true"
+use_legacy_certbot: "false"
 autoupdate_certbot: "false"
 self_signed_cert_location: /etc/ssl/certs
 self_signed_key_location: /etc/ssl/private
